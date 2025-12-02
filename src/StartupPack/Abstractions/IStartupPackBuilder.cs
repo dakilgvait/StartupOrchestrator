@@ -6,8 +6,8 @@ namespace StartupPack;
 public interface IStartupPackBuilder
 {
     void SetupKey(string key);
-    void SetupAddAction(Action<IServiceCollection> action);
-    void SetupUseAction(Action<IApplicationBuilder> action);
+    void SetupServicesAction(Action<IServiceCollection> action);
+    void SetupApplicationAction(Action<IApplicationBuilder> action);
     void SetupIsActiveFunction(Func<bool> func);
     IStartupPack Build(IServiceProvider provider);
 }

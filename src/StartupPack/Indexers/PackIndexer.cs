@@ -21,13 +21,13 @@ public class PackIndexer : IPackIndexer
         return new string[] { };
     }
 
-    public int? GetIndexAdd(string? key)
+    public int? GetApplicationIndex(string? key)
     {
         var index = Array.IndexOf(_addOrderedKeys, key);
         return index < 0 ? null : index;
     }
 
-    public int? GetIndexUse(string? key)
+    public int? GetServicesIndex(string? key)
     {
         var index = Array.IndexOf(_useOrderedKeys, key);
         return index < 0 ? null : index;

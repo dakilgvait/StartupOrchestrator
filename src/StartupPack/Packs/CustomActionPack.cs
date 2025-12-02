@@ -36,13 +36,13 @@ public class CustomActionPack : IStartupPack
         _packModel.ActionAdd?.Invoke(services);
     }
 
-    public int? GetAddIndex()
+    public int? GetServicesIndex()
     {
-        return _packIndexer?.GetIndexAdd(_packModel.Name);
+        return _packIndexer?.GetApplicationIndex(_packModel.Name);
     }
 
-    public int? GetUseIndex()
+    public int? GetApplicationIndex()
     {
-        return _packIndexer?.GetIndexUse(_packModel.Name);
+        return _packIndexer?.GetServicesIndex(_packModel.Name);
     }
 }

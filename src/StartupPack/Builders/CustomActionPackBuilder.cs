@@ -20,7 +20,7 @@ public class CustomActionPackBuilder : IStartupPackBuilder
         return pack;
     }
 
-    public void SetupAddAction(Action<IServiceCollection> action)
+    public void SetupServicesAction(Action<IServiceCollection> action)
     {
         _packModel.ActionAdd = action;
     }
@@ -35,7 +35,7 @@ public class CustomActionPackBuilder : IStartupPackBuilder
         _packModel.Name = key;
     }
 
-    public void SetupUseAction(Action<IApplicationBuilder> action)
+    public void SetupApplicationAction(Action<IApplicationBuilder> action)
     {
         _packModel.ActionUse = action;
     }

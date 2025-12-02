@@ -2,6 +2,6 @@
 
 public interface IPackIndexer
 {
-    int? GetIndexAdd(string? key);
-    int? GetIndexUse(string? key);
+    int? GetApplicationIndex(string? key);
+    int? GetServicesIndex(string? key);
 }

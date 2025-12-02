@@ -8,6 +8,6 @@ public interface IStartupPack
     void ConfigureServices(IServiceCollection services);
     void Configure(IApplicationBuilder application);
     bool GetIsActive();
-    int? GetAddIndex();
-    int? GetUseIndex();
+    int? GetServicesIndex();
+    int? GetApplicationIndex();
 }

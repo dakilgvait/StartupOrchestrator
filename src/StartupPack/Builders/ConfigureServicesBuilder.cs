@@ -33,7 +33,7 @@ public class ConfigureServicesBuilder : IConfigureServicesBuilder
 
         var orderedStartups = activeStartups.Select(x => new
         {
-            index = x.GetAddIndex(),
+            index = x.GetServicesIndex(),
             pack = x
         }).OrderByDescending(x => x.index.HasValue)
             .OrderBy(x => x.index)
