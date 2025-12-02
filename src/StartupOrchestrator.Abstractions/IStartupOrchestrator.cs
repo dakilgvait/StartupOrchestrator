@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace StartupPack.Domain;
+namespace StartupOrchestrator.Abstractions;
 
 public interface IStartupOrchestrator<TBuilder, TApplication>
 {

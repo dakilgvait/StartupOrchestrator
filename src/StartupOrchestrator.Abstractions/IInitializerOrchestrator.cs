@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Hosting;
 
-namespace StartupPack.Domain;
+namespace StartupOrchestrator.Abstractions;
 
 public interface IInitializerOrchestrator
 {

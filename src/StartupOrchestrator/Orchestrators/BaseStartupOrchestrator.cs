@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using StartupPack.Abstractions;
+using StartupOrchestrator.Abstractions;
 
-namespace StartupPack.Orchestrators;
+namespace StartupOrchestrator.Orchestrators;
 
 public class BaseStartupOrchestrator<TBuilder, TApplication> : IStartupOrchestrator<TBuilder, TApplication>
     where TBuilder : IHostApplicationBuilder

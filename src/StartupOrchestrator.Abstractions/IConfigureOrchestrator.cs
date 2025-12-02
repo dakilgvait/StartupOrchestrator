@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 
-namespace StartupPack.Domain;
+namespace StartupOrchestrator.Abstractions;
 
 public interface IConfigureOrchestrator
 {
