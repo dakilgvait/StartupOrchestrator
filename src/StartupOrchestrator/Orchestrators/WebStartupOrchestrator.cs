@@ -31,15 +31,9 @@ public class WebStartupOrchestrator : BaseStartupOrchestrator<WebApplicationBuil
         return this;
     }
 
-    public WebStartupOrchestrator Build()
+    public WebStartupOrchestrator BuildThenRun()
     {
         _ = Build(x => x.Build());
-
-        return this;
-    }
-
-    public WebStartupOrchestrator Run()
-    {
         _ = Run(x => x.Run());
 
         return this;
