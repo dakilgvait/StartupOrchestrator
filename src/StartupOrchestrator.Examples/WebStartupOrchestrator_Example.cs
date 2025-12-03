@@ -2,7 +2,7 @@ using StartupOrchestrator.Orchestrators;
 
 namespace StartupOrchestrator.Examples;
 
-public class Example1
+public class WebStartupOrchestrator_Example
 {
     public static void Main(params string[] args)
     {
