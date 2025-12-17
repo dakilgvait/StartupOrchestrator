@@ -2,7 +2,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace StartupOrchestrator.Extensions;
 
-public static class HostEnvironmentExtensions
+public static partial class StartupOrchestratorExtensions
 {
     public static readonly string Localhost = "Localhost";
 

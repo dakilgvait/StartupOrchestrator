@@ -1,15 +1,15 @@
-using StartupOrchestrator.Orchestrators;
+using StartupOrchestrator.Orchestration;
 
 namespace StartupOrchestrator.Examples;
 
-public class Example1
+public static class Example1
 {
     public static void Main(params string[] args)
     {
-        var orch = new WebStartupOrchestrator(args)
-            .ConfigureServices((services, builder) => { })
-            .Configure(app => { })
-            .Build()
-            .Run();
+        WebStartupOrchestrator
+            .CreateOrchestrator(args)
+            .ConfigureServices((services, configuration, startupProvider) => { })
+            .Configure((app, startupProvider) => { })
+            .BuildThenRun();
     }
 }
