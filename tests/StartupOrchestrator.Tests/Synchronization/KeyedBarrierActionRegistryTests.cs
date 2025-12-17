@@ -7,7 +7,7 @@ namespace StartupOrchestrator.Tests.Synchronization
         [Fact(DisplayName = "Callback works when instances are triggered before registration")]
         public void TriggerBeforeRegister_InvokesCallbackLate()
         {
-            var registry = new KeyedBarrierActionRegistry();
+            var registry = new BarrierActionRegistry();
 
             var user = new TestUser();
             var order = new TestOrder();
@@ -39,7 +39,7 @@ namespace StartupOrchestrator.Tests.Synchronization
         [Fact(DisplayName = "Callback receives keyed and unkeyed instances together")]
         public void TriggerKeyedAndUnkeyed_InvokesCallback()
         {
-            var registry = new KeyedBarrierActionRegistry();
+            var registry = new BarrierActionRegistry();
 
             TestUser? capturedUser = null;
             TestOrder? capturedOrder = null;
@@ -73,7 +73,7 @@ namespace StartupOrchestrator.Tests.Synchronization
         [Fact(DisplayName = "Callback receives keyed instance correctly")]
         public void TriggerKeyedInstance_InvokesCallback()
         {
-            var registry = new KeyedBarrierActionRegistry();
+            var registry = new BarrierActionRegistry();
 
             TestUser? capturedUser = null;
 
@@ -92,7 +92,7 @@ namespace StartupOrchestrator.Tests.Synchronization
         [Fact(DisplayName = "Callback receives multiple types correctly")]
         public void TriggerMultipleInstances_InvokesCallbackWithAllTypes()
         {
-            var registry = new KeyedBarrierActionRegistry();
+            var registry = new BarrierActionRegistry();
 
             TestUser? capturedUser = null;
             TestOrder? capturedOrder = null;
@@ -118,7 +118,7 @@ namespace StartupOrchestrator.Tests.Synchronization
         [Fact(DisplayName = "Callback receives specific keyed and first unkeyed instance")]
         public void TriggerMultipleKeyedInstances_InvokesCallbackCorrectly()
         {
-            var registry = new KeyedBarrierActionRegistry();
+            var registry = new BarrierActionRegistry();
 
             var user1 = new TestUser { Id = 1 };
             var user2 = new TestUser { Id = 2 };
@@ -147,7 +147,7 @@ namespace StartupOrchestrator.Tests.Synchronization
         [Fact(DisplayName = "Callback is invoked when single instance is triggered")]
         public void TriggerSingleInstance_InvokesCallback()
         {
-            var registry = new KeyedBarrierActionRegistry();
+            var registry = new BarrierActionRegistry();
 
             TestUser? capturedUser = null;
 
@@ -165,7 +165,7 @@ namespace StartupOrchestrator.Tests.Synchronization
         [Fact(DisplayName = "Callback receives three types correctly")]
         public void TriggerThreeInstances_InvokesCallbackWithAllTypes()
         {
-            var registry = new KeyedBarrierActionRegistry();
+            var registry = new BarrierActionRegistry();
 
             TestUser? capturedUser = null;
             TestOrder? capturedOrder = null;

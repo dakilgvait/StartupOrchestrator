@@ -1,17 +1,17 @@
 ﻿namespace StartupOrchestrator.Abstractions.Synchronization
 {
-    public interface IKeyedBarrierRegistry
+    public interface IBarrierActionRegistry
     {
         public void AddDependency(
             IBarrierRegistration registration,
-            RegistryKey key,
-            Action<IRegistryContext>? callback);
+            BarrierRegistryKey key,
+            Action<IBarrierRegistryContext>? callback);
 
         public IBarrierBuilder Register<T>(string? key = null)
             where T : notnull;
 
         public void RegisterCallback<T>(
-            Action<IRegistryContext> callback,
+            Action<IBarrierRegistryContext> callback,
             string? key = null)
             where T : notnull;
 

@@ -3,11 +3,11 @@ using StartupOrchestrator.Abstractions.Synchronization;
 
 namespace StartupOrchestrator.Synchronization
 {
-    public sealed class RegistryContext : IRegistryContext
+    public sealed class BarrierRegistryContext : IBarrierRegistryContext
     {
-        private readonly IReadOnlyDictionary<RegistryKey, object> _instances;
+        private readonly IReadOnlyDictionary<BarrierRegistryKey, object> _instances;
 
-        public RegistryContext(IReadOnlyDictionary<RegistryKey, object> instances)
+        public BarrierRegistryContext(IReadOnlyDictionary<BarrierRegistryKey, object> instances)
         {
             _instances = instances;
         }
@@ -29,7 +29,7 @@ namespace StartupOrchestrator.Synchronization
         public T Get<T>(string? key)
             where T : notnull
         {
-            if (_instances.TryGetValue(typeof(T).GetRegistryKey(key), out var value))
+            if (_instances.TryGetValue(typeof(T).CreateKey(key), out var value))
                 return (T)value;
 
             throw new KeyNotFoundException($"No instance registered for type '{typeof(T).FullName}' with key '{key ?? "<null>"}'.");
@@ -57,7 +57,7 @@ namespace StartupOrchestrator.Synchronization
         public bool TryGet<T>(string? key, out T? value)
             where T : notnull
         {
-            if (_instances.TryGetValue(typeof(T).GetRegistryKey(key), out var instance))
+            if (_instances.TryGetValue(typeof(T).CreateKey(key), out var instance))
             {
                 value = (T)instance;
 

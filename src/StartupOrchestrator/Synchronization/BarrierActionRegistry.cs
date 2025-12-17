@@ -3,16 +3,16 @@ using StartupOrchestrator.Abstractions.Synchronization;
 
 namespace StartupOrchestrator.Synchronization
 {
-    public sealed class KeyedBarrierActionRegistry : IKeyedBarrierRegistry
+    public sealed class BarrierActionRegistry : IBarrierActionRegistry
     {
-        private readonly Dictionary<RegistryKey, object> _instances = new();
+        private readonly Dictionary<BarrierRegistryKey, object> _instances = new();
         private readonly object _lock = new();
         private readonly List<IBarrierRegistration> _registrations = new();
 
         public void AddDependency(
             IBarrierRegistration registration,
-            RegistryKey key,
-            Action<IRegistryContext>? callback)
+            BarrierRegistryKey key,
+            Action<IBarrierRegistryContext>? callback)
         {
             lock (_lock)
             {
@@ -34,7 +34,7 @@ namespace StartupOrchestrator.Synchronization
                     where T : notnull
         {
             var registration = new BarrierRegistration();
-            registration.Require(typeof(T).GetRegistryKey(key));
+            registration.Require(typeof(T).CreateKey(key));
 
             lock (_lock)
             {
@@ -45,7 +45,7 @@ namespace StartupOrchestrator.Synchronization
         }
 
         public void RegisterCallback<T>(
-            Action<IRegistryContext> callback,
+            Action<IBarrierRegistryContext> callback,
             string? key = null)
             where T : notnull
         {
@@ -57,7 +57,7 @@ namespace StartupOrchestrator.Synchronization
         {
             lock (_lock)
             {
-                _instances[typeof(T).GetRegistryKey(key)] = instance;
+                _instances[typeof(T).CreateKey(key)] = instance;
                 TryExecuteLocked();
             }
         }
@@ -83,7 +83,7 @@ namespace StartupOrchestrator.Synchronization
             var scopedInstances = registration.Requirements
                 .ToDictionary(x => x, x => _instances[x]);
 
-            registration.Callback?.Invoke(new RegistryContext(scopedInstances));
+            registration.Callback?.Invoke(new BarrierRegistryContext(scopedInstances));
         }
     }
 }

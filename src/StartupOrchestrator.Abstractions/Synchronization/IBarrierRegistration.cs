@@ -2,10 +2,10 @@
 {
     public interface IBarrierRegistration
     {
-        Action<IRegistryContext>? Callback { get; set; }
+        Action<IBarrierRegistryContext>? Callback { get; set; }
         bool Executed { get; set; }
-        IReadOnlyCollection<RegistryKey> Requirements { get; }
+        IReadOnlyCollection<BarrierRegistryKey> Requirements { get; }
 
-        void Require(RegistryKey key);
+        void Require(BarrierRegistryKey key);
     }
 }

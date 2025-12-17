@@ -4,9 +4,9 @@ namespace StartupOrchestrator.Abstractions.Extensions
 {
     public static partial class StartupOrchestratorExtensions
     {
-        public static RegistryKey GetRegistryKey(this Type type, string? key)
+        public static BarrierRegistryKey CreateKey(this Type type, string? key)
         {
-            return new RegistryKey()
+            return new BarrierRegistryKey()
             {
                 Key = key,
                 Type = type

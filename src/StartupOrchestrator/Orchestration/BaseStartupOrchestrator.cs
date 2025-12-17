@@ -57,7 +57,7 @@ namespace StartupOrchestrator.Orchestration
             OrchestratorServices.AddScoped((sp) => builder.Services);
 
             OrchestratorServices.AddScoped<LocalhostActivator>();
-            OrchestratorServices.AddScoped<KeyedBarrierActionRegistry>();
+            OrchestratorServices.AddScoped<BarrierActionRegistry>();
 
             return this;
         }

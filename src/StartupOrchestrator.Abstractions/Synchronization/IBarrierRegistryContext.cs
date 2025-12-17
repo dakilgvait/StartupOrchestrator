@@ -1,6 +1,6 @@
 ﻿namespace StartupOrchestrator.Abstractions.Synchronization
 {
-    public interface IRegistryContext
+    public interface IBarrierRegistryContext
     {
         public T Get<T>()
             where T : notnull;

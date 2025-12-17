@@ -4,6 +4,6 @@ namespace StartupOrchestrator.Abstractions.Components
 {
     public interface IWithRegistry
     {
-        IKeyedBarrierRegistry Registry { get; }
+        IBarrierActionRegistry Registry { get; }
     }
 }

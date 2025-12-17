@@ -6,10 +6,10 @@ namespace StartupOrchestrator.Synchronization
     public sealed class BarrierBuilder : IBarrierBuilder
     {
         private readonly IBarrierRegistration _registration;
-        private readonly IKeyedBarrierRegistry _registry;
+        private readonly IBarrierActionRegistry _registry;
 
         public BarrierBuilder(
-            IKeyedBarrierRegistry registry,
+            IBarrierActionRegistry registry,
             IBarrierRegistration registration)
         {
             _registry = registry;
@@ -19,15 +19,15 @@ namespace StartupOrchestrator.Synchronization
         public IBarrierBuilder Register<T>(string? key = null)
             where T : notnull
         {
-            _registry.AddDependency(_registration, typeof(T).GetRegistryKey(key), callback: null);
+            _registry.AddDependency(_registration, typeof(T).CreateKey(key), callback: null);
 
             return this;
         }
 
-        public void RegisterCallback<T>(Action<IRegistryContext> callback, string? key = null)
+        public void RegisterCallback<T>(Action<IBarrierRegistryContext> callback, string? key = null)
             where T : notnull
         {
-            _registry.AddDependency(_registration, typeof(T).GetRegistryKey(key), callback);
+            _registry.AddDependency(_registration, typeof(T).CreateKey(key), callback);
         }
     }
 }
