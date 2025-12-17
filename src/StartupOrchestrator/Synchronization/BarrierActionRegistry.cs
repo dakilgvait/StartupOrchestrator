@@ -31,7 +31,7 @@ namespace StartupOrchestrator.Synchronization
         }
 
         public IBarrierBuilder Register<T>(string? key = null)
-                    where T : notnull
+            where T : notnull
         {
             var registration = new BarrierRegistration();
             registration.Require(typeof(T).CreateKey(key));
